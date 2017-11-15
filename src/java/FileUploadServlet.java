@@ -18,10 +18,18 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.AsyncContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +40,7 @@ import javax.servlet.http.Part;
 /**
  * File upload servlet example
  */
-@WebServlet(name = "FileUploadServlet", urlPatterns = {"/upload"},asyncSupported = true)
+@WebServlet(name = "FileUploadServlet", urlPatterns = {"/upload"}, asyncSupported = true)
 @MultipartConfig
 public class FileUploadServlet extends HttpServlet {
 
@@ -60,7 +68,7 @@ public class FileUploadServlet extends HttpServlet {
         final String actividad = request.getParameter("actividad");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
         String stamp = simpleDateFormat.format(new Date());
-        final String fileName = stamp+"_"+getFileName(filePart);
+        final String fileName = stamp + "_" + getFileName(filePart);
 
         OutputStream out = null;
         InputStream filecontent = null;
@@ -88,10 +96,9 @@ public class FileUploadServlet extends HttpServlet {
                 return;
             }
 
-            request.setAttribute("id", fileName.substring(0, fileName.lastIndexOf(".zip"))+".txt");
+            request.setAttribute("id", fileName.substring(0, fileName.lastIndexOf(".zip")) + ".txt");
             request.getRequestDispatcher("/result.jsp").forward(request, response);
-            
-            
+
             CompruebaPracticas.compruebaPractica(actividad, path + "/" + fileName);
 
             /*String filePath = path + "/" + fileName.substring(0, fileName.lastIndexOf(".zip")) + "/informe.txt";
@@ -135,7 +142,6 @@ public class FileUploadServlet extends HttpServlet {
 
             inStream.close();
             outStream.close();*/
-
         } catch (FileNotFoundException fne) {
             String message = "No has especificado un fichero.";
             request.setAttribute("message", message);
@@ -155,7 +161,7 @@ public class FileUploadServlet extends HttpServlet {
         }
     }
 
-    private String getFileName(final Part part) {
+    private static String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
         LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
         for (String content : part.getHeader("content-disposition").split(";")) {
@@ -165,6 +171,93 @@ public class FileUploadServlet extends HttpServlet {
             }
         }
         return null;
+    }
+
+    private static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+
+    static {
+        executorService.scheduleAtFixedRate(FileUploadServlet::newEvent, 0, 2, TimeUnit.SECONDS);
+    }
+
+    private static void newEvent() {
+        ArrayList clients = new ArrayList<>(queue.size());
+        queue.drainTo(clients);
+        clients.parallelStream().forEach((AsyncContext ac) -> {
+
+        try {
+            HttpServletResponse response = (HttpServletResponse)ac.getResponse();
+            HttpServletRequest request = (HttpServletRequest)ac.getRequest();
+            response.setContentType("text/html;charset=UTF-8");
+            
+            // Create path components to save the file
+            final String path = "/home/joheras/tmp";
+            final Part filePart = request.getPart("file");
+            final String actividad = request.getParameter("actividad");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
+            String stamp = simpleDateFormat.format(new Date());
+            final String fileName = stamp + "_" + getFileName(filePart);
+            
+            OutputStream out = null;
+            InputStream filecontent = null;
+            //final PrintWriter writer = response.getWriter();
+            
+            try {
+                out = new FileOutputStream(new File(path + File.separator
+                        + fileName));
+                filecontent = filePart.getInputStream();
+                
+                int read;
+                final byte[] bytes = new byte[1024];
+                
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
+                }
+                //writer.println("New file " + fileName + " created at " + path);
+                LOGGER.log(Level.INFO, "File {0} being uploaded to {1}",
+                        new Object[]{fileName, path});
+                
+                if (!fileName.contains(".zip")) {
+                    String message = "Tienes que subir un fichero con extensión .zip.";
+                    request.setAttribute("message", message);
+                    request.getRequestDispatcher("/error.jsp").forward(request, response);
+                    return;
+                }
+                
+                request.setAttribute("id", fileName.substring(0, fileName.lastIndexOf(".zip")) + ".txt");
+                request.getRequestDispatcher("/result.jsp").forward(request, response);
+                
+                CompruebaPracticas.compruebaPractica(actividad, path + "/" + fileName);
+                
+            } catch (FileNotFoundException fne) {
+                String message = "No has especificado un fichero.";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("/error.jsp").forward(request, response);
+                
+                LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}",
+                        new Object[]{fne.getMessage()});
+            } finally {
+                
+                if (out != null) {
+                    out.close();
+                }
+                if (filecontent != null) {
+                    filecontent.close();
+                }
+                
+            }
+            ac.complete();
+        } catch (IOException ex) {
+                Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }   catch (ServletException ex) {
+                Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    private static final BlockingQueue queue = new ArrayBlockingQueue<>(20000);
+
+    public static void addToWaitingList(AsyncContext c) {
+        queue.add(c);
     }
 
     /**
@@ -178,11 +271,12 @@ public class FileUploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+        addToWaitingList(request.startAsync());
+        /*try {
             processRequest(request, response);
         } catch (InterruptedException ex) {
             Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     /**
