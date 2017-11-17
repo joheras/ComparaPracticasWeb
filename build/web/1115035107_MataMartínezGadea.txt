@@ -1,0 +1,441 @@
+******************************************************
+Comprobando si la estructura es correcta
+******************************************************
+Falta el fichero /Practica02/Parte03/Java/Principal_prac02_03.java
+
+
+
+******************************************************
+Comprobando si los ficheros compilan
+******************************************************
+******************************************************
+Parte C++
+******************************************************
+--------------------------------------
+/Practica01/Parte01/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica01/Parte02/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica01/Parte03/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica03/Parte01/C++
+--------------------------------------
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/C++/Principal_prac03_01.cpp:1:19: fatal error: Punto.h: No existe el archivo o el directorio
+ #include "Punto.h"
+                   ^
+compilation terminated.
+
+
+--------------------------------------
+/Practica03/Parte02/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica04/Parte01/C++
+--------------------------------------
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica04/Parte01/C++/Principal_prac04_01.cpp: In function ‘int main()’:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica04/Parte01/C++/Principal_prac04_01.cpp:21:59: error: ‘Curso’ is not a class or namespace
+ Matricula *matricula= new Matricula(asignatura,estudiante,Curso::C1718, OrdenMatricula::M2);
+                                                           ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica04/Parte01/C++/Principal_prac04_01.cpp:21:73: error: ‘OrdenMatricula’ is not a class or namespace
+ Matricula *matricula= new Matricula(asignatura,estudiante,Curso::C1718, OrdenMatricula::M2);
+                                                                         ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica04/Parte01/C++/Principal_prac04_01.cpp:24:61: error: ‘Curso’ is not a class or namespace
+ Matricula *matricula2= new Matricula(asignatura2,estudiante,Curso::C1718, OrdenMatricula::M1);
+                                                             ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica04/Parte01/C++/Principal_prac04_01.cpp:24:75: error: ‘OrdenMatricula’ is not a class or namespace
+ Matricula *matricula2= new Matricula(asignatura2,estudiante,Curso::C1718, OrdenMatricula::M1);
+                                                                           ^
+
+
+--------------------------------------
+/Practica04/Parte02/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica05/Parte01/C++
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica05/Parte02/C++
+--------------------------------------
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Asignatura.cpp: In constructor ‘Asignatura::Asignatura()’:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Asignatura.cpp:6:12: error: ‘Tipo’ is not a class or namespace
+ this->tipo=Tipo::Troncal;
+            ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Matricula.cpp: In member function ‘double Matricula::getPrecio()’:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Matricula.cpp:36:14: error: ‘OrdenMatricula’ is not a class or namespace
+         case OrdenMatricula::M2:
+              ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Matricula.cpp:39:14: error: ‘OrdenMatricula’ is not a class or namespace
+         case OrdenMatricula::M3:
+              ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Matricula.cpp:42:14: error: ‘OrdenMatricula’ is not a class or namespace
+         case OrdenMatricula::M4:
+              ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp: In function ‘int main()’:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp:15:51: error: ‘Tipo’ is not a class or namespace
+  Actividad *act1 = new Asignatura("POO", 6, 2010, Tipo::Troncal);
+                                                   ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp:20:45: error: ‘Curso’ is not a class or namespace
+   Matricula *m1 = new Matricula(act1, est1, Curso::C1617,OrdenMatricula::M2);
+                                             ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp:20:58: error: ‘OrdenMatricula’ is not a class or namespace
+   Matricula *m1 = new Matricula(act1, est1, Curso::C1617,OrdenMatricula::M2);
+                                                          ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp:21:45: error: ‘Curso’ is not a class or namespace
+   Matricula *m2 = new Matricula(act2, est1, Curso::C1718,OrdenMatricula::M1);
+                                             ^
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica05/Parte02/C++/Principal_prac05_02.cpp:21:58: error: ‘OrdenMatricula’ is not a class or namespace
+   Matricula *m2 = new Matricula(act2, est1, Curso::C1718,OrdenMatricula::M1);
+                                                          ^
+
+
+--------------------------------------
+/Practica06/Parte01/C++
+--------------------------------------
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/FSObject.h:17:34: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     char *permissions= new char[9];
+                                  ^
+In file included from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/TextFile.h:4:0:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/FSObject.h:17:34: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     char *permissions= new char[9];
+                                  ^
+In file included from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/TextFile.h:4:0,
+                 from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/Directory.h:4:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/FSObject.h:17:34: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     char *permissions= new char[9];
+                                  ^
+In file included from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/TextFile.h:4:0,
+                 from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/Directory.h:4,
+                 from /home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/FileManager.h:6:
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica06/Parte01/C++/FSObject.h:17:34: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     char *permissions= new char[9];
+                                  ^
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o: En la función `_start':
+(.text+0x20): referencia a `main' sin definir
+collect2: error: ld returned 1 exit status
+
+
+******************************************************
+Parte Java
+******************************************************
+--------------------------------------
+/Practica02/Parte01/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica02/Parte02/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica02/Parte03/Java
+--------------------------------------
+javac: file not found: /home/joheras/tmp/1115035107_MataMartínezGadea/Practica02/Parte03/Java/Principal_prac02_03.java
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+
+--------------------------------------
+/Practica03/Parte01/Java
+--------------------------------------
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:58: error: cannot find symbol
+	public static void setPuntoUno (Punto p) {
+	                                ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:67: error: cannot find symbol
+	public static void permutarPuntos (Punto p1, Punto p2) {
+	                                   ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:67: error: cannot find symbol
+	public static void permutarPuntos (Punto p1, Punto p2) {
+	                                             ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:79: error: cannot find symbol
+	public static void modificarPuntoFinal(final Punto p) {
+	                                             ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:10: error: cannot find symbol
+		Punto p1= new Punto(3.0,4.0);
+		^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:10: error: cannot find symbol
+		Punto p1= new Punto(3.0,4.0);
+		              ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:11: error: cannot find symbol
+		Punto p2= new Punto(2.5,7.5);
+		^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:11: error: cannot find symbol
+		Punto p2= new Punto(2.5,7.5);
+		              ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:50: error: cannot find symbol
+		Punto [] v_punt = new Punto[15]; //ej. 14
+		^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:50: error: cannot find symbol
+		Punto [] v_punt = new Punto[15]; //ej. 14
+		                      ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:53: error: cannot find symbol
+			v_punt [i]= new Punto ();
+			                ^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+/home/joheras/tmp/1115035107_MataMartínezGadea/Practica03/Parte01/Java/Principal_prac03_01.java:68: error: cannot find symbol
+		Punto aux;
+		^
+  symbol:   class Punto
+  location: class Principal_prac03_01
+12 errors
+
+
+--------------------------------------
+/Practica03/Parte02/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica04/Parte01/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica04/Parte02/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica05/Parte01/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica05/Parte02/Java
+--------------------------------------
+Compila correctamente
+
+
+--------------------------------------
+/Practica06/Parte01/Java
+--------------------------------------
+Compila correctamente
+
+
+
+
+
+******************************************************
+Comprobando los tests
+******************************************************
+******************************************************
+Parte C++
+******************************************************
+--------------------------------------
+Tests en Practica01/Parte01/C++
+--------------------------------------
+===============================================================================
+All tests passed (22 assertions in 5 test cases)
+
+
+
+--------------------------------------
+Tests en Practica01/Parte02/C++
+--------------------------------------
+===============================================================================
+All tests passed (23 assertions in 7 test cases)
+
+
+
+--------------------------------------
+Tests en Practica01/Parte03/C++
+--------------------------------------
+===============================================================================
+All tests passed (40 assertions in 8 test cases)
+
+
+
+--------------------------------------
+Tests en Practica03/Parte02/C++
+--------------------------------------
+===============================================================================
+All tests passed (44 assertions in 10 test cases)
+
+
+
+--------------------------------------
+Tests en Practica04/Parte01/C++
+--------------------------------------
+Se produjeron errores de compilación con los tests
+
+
+--------------------------------------
+Tests en Practica04/Parte02/C++
+--------------------------------------
+===============================================================================
+All tests passed (89 assertions in 14 test cases)
+
+
+
+--------------------------------------
+Tests en Practica05/Parte01/C++
+--------------------------------------
+===============================================================================
+All tests passed (88 assertions in 21 test cases)
+
+
+
+--------------------------------------
+Tests en Practica05/Parte02/C++
+--------------------------------------
+Se produjeron errores de compilación con los tests
+
+
+--------------------------------------
+Tests en Practica06/Parte01/C++
+--------------------------------------
+===============================================================================
+All tests passed (69 assertions in 10 test cases)
+
+
+
+******************************************************
+Parte Java
+******************************************************
+--------------------------------------
+Tests en Practica02/Parte01/Java
+--------------------------------------
+JUnit version 4.12
+......
+Time: 0.004
+
+OK (6 tests)
+
+
+
+--------------------------------------
+Tests en Practica02/Parte02/Java
+--------------------------------------
+JUnit version 4.12
+.......
+Time: 0.003
+
+OK (7 tests)
+
+
+
+--------------------------------------
+Tests en Practica02/Parte03/Java
+--------------------------------------
+JUnit version 4.12
+........
+Time: 0.003
+
+OK (8 tests)
+
+
+
+--------------------------------------
+Tests en Practica03/Parte02/Java
+--------------------------------------
+JUnit version 4.12
+............
+Time: 0.004
+
+OK (12 tests)
+
+
+
+--------------------------------------
+Tests en Practica04/Parte01/Java
+--------------------------------------
+JUnit version 4.12
+........
+Time: 0.004
+
+OK (8 tests)
+
+
+
+--------------------------------------
+Tests en Practica04/Parte02/Java
+--------------------------------------
+JUnit version 4.12
+.................
+Time: 0.006
+
+OK (17 tests)
+
+
+
+--------------------------------------
+Tests en Practica05/Parte01/Java
+--------------------------------------
+JUnit version 4.12
+.........................
+Time: 0.006
+
+OK (25 tests)
+
+
+
+--------------------------------------
+Tests en Practica05/Parte02/Java
+--------------------------------------
+JUnit version 4.12
+.....................
+Time: 0.005
+
+OK (21 tests)
+
+
+
+--------------------------------------
+Tests en Practica06/Parte01/Java
+--------------------------------------
+JUnit version 4.12
+..........
+Time: 0.005
+
+OK (10 tests)
+
+
+
